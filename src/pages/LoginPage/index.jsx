@@ -1,14 +1,14 @@
 import { Link, useNavigate } from "react-router-dom"
-import { Input } from "../Input"
 import styles from "./style.module.scss"
 import Logo from "../../assets/Logo.png"
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa"
 import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { loginFormSchema } from "../Schemas/loginFormSchema"
 import { api } from './../../services/api'
 import { toast } from "react-hot-toast"
+import { Input } from './../../components/Input/index';
+import { loginFormSchema } from './../../components/Schemas/loginFormSchema';
 
 export const LoginPage = ({ setUser }) => {
     const [showPassword, setShowPassword] = useState(false)

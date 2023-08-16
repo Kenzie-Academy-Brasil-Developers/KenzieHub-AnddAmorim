@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom"
-import { LoginPage } from "../components/LoginPage"
-import { RegisterPage } from "../components/RegisterPage"
-import { DashboardPage } from "../components/DashboardPage"
 import { useState } from "react"
+import { LoginPage } from "../pages/LoginPage"
+import { RegisterPage } from "../pages/RegisterPage"
+import { DashboardPage } from "../pages/DashboardPage"
 
 export const RoutesMain = () => {
     const [user, setUser] = useState(null)

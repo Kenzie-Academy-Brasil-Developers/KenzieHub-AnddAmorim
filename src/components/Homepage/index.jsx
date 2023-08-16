@@ -1,8 +1,9 @@
-import { LoginPage } from './../LoginPage/index'
-import { RegisterPage } from './../RegisterPage/index'
-import { DashboardPage } from './../DashboardPage/index'
 import { RoutesMain } from '../../routes'
 import { useState } from 'react'
+import { LoginPage } from './../../pages/LoginPage/index';
+import { RegisterPage } from './../../pages/RegisterPage/index';
+import { DashboardPage } from './../../pages/DashboardPage/index';
+
 
 export const Homepage = () => {
     const [user, setUser] = useState([])
