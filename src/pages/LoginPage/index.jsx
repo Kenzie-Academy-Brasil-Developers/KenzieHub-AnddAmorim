@@ -1,43 +1,22 @@
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import styles from "./style.module.scss"
 import Logo from "../../assets/Logo.png"
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { api } from './../../services/api'
-import { toast } from "react-hot-toast"
-import { Input } from './../../components/Input/index';
-import { loginFormSchema } from './../../components/Schemas/loginFormSchema';
+import { Input } from './../../components/Input/index'
+import { loginFormSchema } from './../../components/Schemas/loginFormSchema'
+import { UserContext } from "../../providers"
 
-export const LoginPage = ({ setUser }) => {
+export const LoginPage = () => {
     const [showPassword, setShowPassword] = useState(false)
 
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: zodResolver(loginFormSchema)
     })
 
-    const navigate = useNavigate()
-
-    const submit = async (formData) => {
-
-        try {
-            const response = await api.post("/sessions", formData)
-
-            if (response.status === 200) {
-                const user = response.data.user
-                setUser(user)
-                localStorage.setItem("@USER", JSON.stringify(user))
-                toast.success(`"Olá, ${user.name} seja bem-vindo"`)
-                navigate("/dashboard")
-            }
-
-        } catch (error) {
-            console.log(error)
-            toast.error("Ops, algo está errado")
-
-        }
-    }
+    const { submit } = useContext(UserContext)
 
     const seePassword = () => {
         setShowPassword(!showPassword)

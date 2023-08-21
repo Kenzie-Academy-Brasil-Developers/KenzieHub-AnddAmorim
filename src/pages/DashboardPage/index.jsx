@@ -1,16 +1,11 @@
-import { useNavigate } from "react-router-dom"
 import Logo from "../../assets/Logo.png"
 import styles from "./style.module.scss"
+import { useContext } from "react"
+import { UserContext } from "../../providers"
 
-export const DashboardPage = ({ user, setUser }) => {
+export const DashboardPage = () => {
 
-    const navigate = useNavigate()
-
-    const logout = () => {
-        localStorage.removeItem("@USER")
-        setUser(null)
-        navigate("/")
-    }
+    const { user, logout } = useContext(UserContext)
 
     return (
         <>

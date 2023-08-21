@@ -1,15 +1,14 @@
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import Logo from "../../assets/Logo.png"
 import styles from "./style.module.scss"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa"
 import { useForm } from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod'
-import { api } from "../../services/api"
-import { toast } from "react-hot-toast"
 import { Input } from "../../components/Input"
-import { Select } from './../../components/Select/index';
-import { registerFormSchema } from './../../components/Schemas/registerFormSchema';
+import { Select } from './../../components/Select/index'
+import { registerFormSchema } from './../../components/Schemas/registerFormSchema'
+import { UserContext } from "../../providers"
 
 
 export const RegisterPage = () => {
@@ -20,23 +19,7 @@ export const RegisterPage = () => {
     resolver: zodResolver(registerFormSchema)
   })
 
-  const navigate = useNavigate()
-
-  const userRegister = async (formData) => {
-    try {
-      const { data } = await api.post("/users", formData)
-      localStorage.setItem("@USER", data)
-      toast.success("Conta criada com sucesso", {
-        duration: 2000
-      })
-      navigate("/")
-    } catch (error) {
-      console.log(error)
-      toast.error("Opa, Algo deu errado", {
-        duration: 2000
-      })
-    }
-  }
+  const { userRegister } = useContext(UserContext)
 
   const submit = (formData) => {
     userRegister(formData)
