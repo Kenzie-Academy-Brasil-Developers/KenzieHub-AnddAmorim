@@ -5,9 +5,9 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa"
 import { useContext, useState } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Input } from './../../components/Input/index'
-import { loginFormSchema } from './../../components/Schemas/loginFormSchema'
-import { UserContext } from "../../providers"
+import { Input } from "./../../components/Input/index"
+import { loginFormSchema } from "./../../components/Schemas/loginFormSchema"
+import { UserContext } from "../../providers/userProvider"
 
 export const LoginPage = () => {
     const [showPassword, setShowPassword] = useState(false)

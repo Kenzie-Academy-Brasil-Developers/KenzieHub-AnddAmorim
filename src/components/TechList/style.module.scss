@@ -1,0 +1,20 @@
+.divTechs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  h2 {
+    color: var(--color-gray-0);
+  }
+  .divButton {
+    background: var(--color-gray-3);
+    height: 25px;
+    width: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    button{
+        color: var(--color-white)
+    }
+  }
+}

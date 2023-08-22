@@ -7,6 +7,10 @@ export const UserContext = createContext({})
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null)
+  const [technoList, setTechnoList] = useState([])
+
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     const token = localStorage.getItem("@TOKEN")
@@ -18,6 +22,7 @@ export const UserProvider = ({ children }) => {
           }
         })
         setUser(data)
+        navigate("/dashboard")
       } catch (error) {
         console.log(error)
       }
@@ -27,8 +32,6 @@ export const UserProvider = ({ children }) => {
     }
   }, [])
 
-
-  const navigate = useNavigate()
 
   const userRegister = async (formData) => {
     try {
@@ -55,6 +58,7 @@ export const UserProvider = ({ children }) => {
         const data = response.data
         localStorage.setItem("@TOKEN", data.token)
         setUser(data.user)
+        setTechnoList(data.user)
         toast.success(`Olá, ${data.user.name} seja bem-vindo`)
         navigate("/dashboard")
       }
@@ -75,7 +79,7 @@ export const UserProvider = ({ children }) => {
 
 
   return (
-    <UserContext.Provider value={{ user, setUser, userRegister, submit, logout }}>
+    <UserContext.Provider value={{ user, setUser, userRegister, submit, logout, technoList, setTechnoList }}>
       {children}
     </UserContext.Provider>
   )

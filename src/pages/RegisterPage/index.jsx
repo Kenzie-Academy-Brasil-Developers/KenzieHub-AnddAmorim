@@ -4,11 +4,11 @@ import styles from "./style.module.scss"
 import { useContext, useState } from "react"
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa"
 import { useForm } from "react-hook-form"
-import { zodResolver } from '@hookform/resolvers/zod'
+import { zodResolver } from "@hookform/resolvers/zod"
 import { Input } from "../../components/Input"
-import { Select } from './../../components/Select/index'
-import { registerFormSchema } from './../../components/Schemas/registerFormSchema'
-import { UserContext } from "../../providers"
+import { Select } from "./../../components/Select/index"
+import { registerFormSchema } from "./../../components/Schemas/registerFormSchema"
+import { UserContext } from "../../providers/userProvider"
 
 
 export const RegisterPage = () => {

@@ -42,10 +42,19 @@
 
 .divContent {
     display: flex;
-    flex-direction: column;
-    gap: 25px;
+    align-items: center;
+    justify-content: space-between;
 
     h2{
         color: var(--color-gray-0);
+    }
+
+    button{
+        color: var(--color-white);
+        background-color: var(--color-gray-3);
+        font-size: 25px;
+        width: 30px;
+        display: flex;
+        justify-content: center;
     }
 }
