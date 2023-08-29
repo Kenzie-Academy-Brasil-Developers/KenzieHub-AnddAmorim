@@ -1,0 +1,13 @@
+select {
+    height: 48px;
+    background-color: var(--color-gray-2);
+    color: var(--color-gray-0);
+    border-radius: 4px;
+    padding: 0 20px;
+    width: 100%;
+  
+    select:focus {
+      border: 1px solid var(--color-gray-0);
+    }
+  }
+  

@@ -3,7 +3,6 @@ import styles from "./style.module.scss"
 import { useContext } from "react"
 import { UserContext } from "../../providers/userProvider"
 import { Techlist } from "../../components/TechList"
-// import {AiOutlinePlus} from "react-icons/ai"
 
 export const DashboardPage = () => {
 
@@ -25,14 +24,9 @@ export const DashboardPage = () => {
                     </div>
                 </div>
             </div>
-            {/* <div className="container">
-                <div className={styles.divContent}>
-                    <h2 className="title1">Tecnologias</h2>
-                    <button>+</button>
-                </div>
-            </div> */}
+
             <div>
-                <Techlist/>
+                <Techlist />
             </div>
         </>
     )

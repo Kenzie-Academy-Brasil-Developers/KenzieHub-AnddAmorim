@@ -16,5 +16,5 @@ export const loginFormSchema = z.object({
     .regex(
       /(?=.*?[#?!@$%^&*-])/,
       "É necessário pelo menos um caracter especial"
-    )
+    ),
 })

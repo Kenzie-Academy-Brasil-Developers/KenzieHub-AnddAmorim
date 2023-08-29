@@ -7,8 +7,7 @@ export const UserContext = createContext({})
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null)
-  const [technoList, setTechnoList] = useState([])
-
+  const [techs, setTechs] = useState([])
 
   const navigate = useNavigate()
 
@@ -22,6 +21,7 @@ export const UserProvider = ({ children }) => {
           }
         })
         setUser(data)
+        setTechs(data.techs)
         navigate("/dashboard")
       } catch (error) {
         console.log(error)
@@ -31,7 +31,6 @@ export const UserProvider = ({ children }) => {
       getUser()
     }
   }, [])
-
 
   const userRegister = async (formData) => {
     try {
@@ -48,9 +47,7 @@ export const UserProvider = ({ children }) => {
     }
   }
 
-
   const submit = async (formData) => {
-
     try {
       const response = await api.post("/sessions", formData)
 
@@ -58,14 +55,13 @@ export const UserProvider = ({ children }) => {
         const data = response.data
         localStorage.setItem("@TOKEN", data.token)
         setUser(data.user)
-        setTechnoList(data.user)
+        setTechs(data.user.techs)
         toast.success(`Olá, ${data.user.name} seja bem-vindo`)
         navigate("/dashboard")
       }
     } catch (error) {
       console.log(error)
       toast.error("Ops, algo está errado")
-
     }
   }
 
@@ -77,9 +73,8 @@ export const UserProvider = ({ children }) => {
     navigate("/")
   }
 
-
   return (
-    <UserContext.Provider value={{ user, setUser, userRegister, submit, logout, technoList, setTechnoList }}>
+    <UserContext.Provider value={{ user, setUser, userRegister, submit, logout, techs, setTechs}}>
       {children}
     </UserContext.Provider>
   )
